@@ -1,0 +1,64 @@
+class Corp:
+    cname = '=== Geneal Bae Company==='
+    job = 'ข้อมูลพนักงาน'
+    adress = 'ที่อยู่ 999 ถนนวิภาวดี แขวงลาดยาว เขตจตุจักร กรุงเทพมหานคร 10900'
+    
+
+    def __init__(self):
+        print(self.cname)
+        print(self.adress)
+        print(self.job)
+        
+
+    def require(self):
+        print('ตำแหน่งงานที่รับสมัคร')
+        
+
+class Employee(Corp):
+    def __init__(self , fullname , age , position , salary):
+        super().__init__()
+        self.fullname = fullname
+        self.age = age
+        self.position = position
+        self.salary = salary
+
+    def Name(self):
+        print(f'คุณชื่อ : {self.fullname}')
+
+    def Age(self):
+        print(f'อายุปัจจุบันของคุณ : {self.age}')
+        print(f'คุณจะทำงานกับเราได้อีก : {60-self.age} ปี')
+
+    def Position(self):
+        print(f'ตำแหน่งของคุณ : {self.position}')
+
+    def Salary(self):
+        #คำนวณเงินเดือนขึ้น
+        upsalary = self.salary + 250
+        print(f'เงินเดือนของคุณ : {self.salary} บาท')
+        print(f'เงินเดือนจะปรับขึ้นขั้นต่ำปีละ 250 บาท')
+        print(f'ปีหน้าคุณจะได้รับเงินเดือน เดือนละ : {upsalary} บาท')
+
+    def OT(self):
+        otcal = self.salary*100/7000
+        print(f'คุณจะได้รับโอทีอัตรา {otcal} บาทต่อชั่วโมง')
+        hrs = int(input('คุณทำโอทีไปแล้วกี่ชั่วโมง'))
+        total = hrs*self.salary*100/7000
+        print(f'คุณจะได้รับเงินเพิ่มจากการทำ OT {hrs} ชั่วโมง เป็นเงิน {hrs*self.salary*100/7000} บาท')
+        print(f'คุณจะได้รับเงินเดือนสุทธิ {total+self.salary}')
+        print('---------------------------')
+
+if __name__ == '__main__':
+    em01 = Employee('สมชาย ใจหาญ' , 50 , 'พนักงาน' , 15000)
+    em01.Name()
+    em01.Age()
+    em01.Position()
+    em01.Salary()
+    em01.OT()
+
+    em02 = Employee('สมหญิง ใจดี' , 25 , 'ลูกค้าสัมพันธ์' , 20000)
+    em02.Name()
+    em02.Age()
+    em02.Position()
+    em02.Salary()
+    em02.OT()
